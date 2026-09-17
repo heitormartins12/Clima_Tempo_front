@@ -41,7 +41,25 @@ botaoBuscar.addEventListener("click"), async function(){
         </div>
     `;
 
+        localStorage.setItem("ultimaCidade",cidade)
+
+        const previsao = await buscarPrevisao(cidade)
+        mostrarPrevisao(cidade)
+
     }
+
+    function montarPrevisao(previsao){
+        divPrevisao.innerHTML = "";
+
+        if (item.dt_txt.Includes("12:00:00")){
+            const data = new Date(item.dt_txt);
+            const diaSemana = data.toDateString("pt-BR", {weekday: "shot"});
+            const iconeUrl = `https://openweather.org/img/wn/${dados.weather[0].icon}@2x.png`
+
+            divPrevisao += ``
+        }
+    }
+
 
  async function buscarPrevisao(cidade){
         const url = `https://api.openweathermap.org/data/2.5/weather?q=${cidade}&appid=${CHAVE_API}&units=metric&lang=pt_br`
